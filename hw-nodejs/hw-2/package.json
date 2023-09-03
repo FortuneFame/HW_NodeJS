@@ -1,0 +1,15 @@
+{
+  "name": "hw-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "create.js",
+  "scripts": {
+    "create": "node create.js",
+    "remove": "node remove.js",
+    "append": "node append.js",
+    "list": "node list.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

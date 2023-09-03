@@ -1,10 +1,12 @@
 const fs = require('fs');
-const path = './fs_test_directory/';
 
-const poem = 'Я вас любил любовь еще быть может в душе моей угасла не совсем но пусть она вас больше не тревожит Я не хочу печалить вас ничем'.split(' ');
+const poem = "Я вас любил любовь еще быть может в душе моей угасла не совсем но пусть она вас больше не тревожит Я не хочу печалить вас ничем".split(' '); 
 
 for (let i = 0; i < 50; i++) {
-  fs.writeFileSync(`${path}file${i + 1}.txt`, poem[i % poem.length]);
+  const word = poem[i % poem.length];
+  fs.writeFileSync(`./fs_test_directory/file${i + 1}.txt`, word);
 }
 
-console.log('files created');
+console.log('Files created');
+
+//  node create.js 
