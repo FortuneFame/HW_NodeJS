@@ -6,7 +6,7 @@ const words = "Я вас любил любовь еще быть может в �
 class Member extends EventEmitter{
     constructor() {
         super();
-        global.ticker.on('month', this.createPost.bind(this)); // Подписываемся на глобальное событие 'month'
+        global.ticker.on('month', this.createPost.bind(this)); // Подписываем на глобальное событие 'month'
     };
 
     createPost() {
@@ -18,7 +18,7 @@ class Member extends EventEmitter{
 
     generateRandomText() {
         const getRandomWord = () => words[Math.floor(Math.random() * words.length)];
-        return `${getRandomWord()} ${getRandomWord()} ${getRandomWord()}`; // Можно было через "for" но циклы могут потреблять много процессорного времени или памяти 
+        return `${getRandomWord()} ${getRandomWord()} ${getRandomWord()}`; // Можно через "for" но циклы потребляют много времени и памяти 
     };
 };
 
