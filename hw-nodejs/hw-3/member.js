@@ -18,7 +18,7 @@ class Member extends EventEmitter{
 
     generateRandomText() {
         const getRandomWord = () => words[Math.floor(Math.random() * words.length)];
-        return `${getRandomWord()} ${getRandomWord()} ${getRandomWord()}`; // можно было через for, но циклы могут потреблять много процессорного времени или памяти 
+        return `${getRandomWord()} ${getRandomWord()} ${getRandomWord()}`; // Можно было через "for" но циклы могут потреблять много процессорного времени или памяти 
     };
 };
 

@@ -41,7 +41,7 @@ class Social extends EventEmitter {
         console.log(`\n  Количество публикаций: 👀 ${this.posts.length}`);
         console.log('\n |---|💥 TOP 3 публикаций 💥|---|');
         topPosts.forEach((post, index) => {
-            console.log(`\n  ${index + 1}.✍️  Post: "${post.text}" \n  Оценили: 👍 ${post.likes}`);
+            console.log(`\n  №${index + 1} ✍️  Post: "${post.text}" \n  Оценили: 👍 ${post.likes}`);
         });
         console.log('|________________________________|\n');
     };
