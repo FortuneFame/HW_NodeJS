@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "task1": "node copy.js",
+    "task2": "node encode.js",
+    "task3": "node decode.js",
+    "task4": "node progress.js"
   },
   "keywords": [],
   "author": "",
