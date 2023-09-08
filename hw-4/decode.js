@@ -24,3 +24,7 @@ for (let symbol of data) {
 fs.writeFileSync(filePath, decodedData);
 
 console.log('\nFile DECODING completed!');
+
+// npm run task3 <путь_к_файлу_для_раскодирования> <путь_к_файлу_таблицы_кодировки>
+// npm run task3 1.txt 4.txt
+// npm run task3 ./1.txt/ ./4.txt/

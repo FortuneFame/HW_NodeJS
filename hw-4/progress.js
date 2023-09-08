@@ -27,3 +27,5 @@ const interval = setInterval(() => {
         console.clear();
     }
 }, delay);
+
+// npm run task4

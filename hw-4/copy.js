@@ -30,3 +30,7 @@ readStream.on('end', () => {
         .then(() => {console.log('\nFile COPYING completed!');
     });
 });
+
+// npm run task1 <путь_к_исходному_файлу> <путь_для_копирования>
+// npm run task1 1.txt 4.txt
+// npm run task1 ./1.txt/ ./4.txt/
