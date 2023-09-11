@@ -20,14 +20,11 @@ class MessengerFacade {
 
     // Отправка объявления от одного пользователя всем остальным
     sendAnnouncement(sender, message) {
-        // Получаем списка имен всех пользователей, кроме отправителя
-        const receiverNames = this.mediator.users
-            .filter(user => user !== sender)
-            .map(user => user.name)
-            .join(', ');
-
-        // Выводим одно сообщение ко всем
-        console.log(`${sender.name} к Пользователям: ${receiverNames}: \n  - ${message}\n`);
+        this.mediator.users.forEach(user => {
+            if (user !== sender) {
+                user.receiveMessage(sender, message);
+            }
+        });
     }
 }
 
