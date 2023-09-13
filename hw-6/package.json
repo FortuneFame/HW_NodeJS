@@ -1,0 +1,14 @@
+{
+  "name": "hw-6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "task1": "node readable.js",
+    "task2": "node writable.js",
+    "task3": "node transform.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
