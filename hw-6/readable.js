@@ -1,59 +1,67 @@
 const { Readable } = require('stream');
 
 class MyReadable extends Readable {
-    constructor(data, options) {
+    constructor(dataStr, options) {
         super(options);
-        this.data = data; 
+        this.dataStr = dataStr; 
         this.dataIndex = 0;
         this.leftover = '';
         this.chunkCount = 0;
     };
-    _read() {
 
-        // Читаем следующий кусок
-        let chunk = this.data[this.dataIndex] || '';
-        
-        // Если есть остаток, добавляем его к текущему
+    _read() {
+        const chunkSize = this.readableHighWaterMark;
+        let chunk = this.dataStr.substring(this.dataIndex, this.dataIndex + chunkSize - this.leftover.length);
+
         if (this.leftover) {
             chunk = this.leftover + chunk;
             this.leftover = '';
         };
 
-        // Если последний символ пробел, разбиваем чанк до близжайшего символа
-        if (chunk.slice(-1) === ' ') {
-            let lastSpaceIndex = chunk.lastIndexOf(' ', chunk.length - 2);
-            if (lastSpaceIndex !== -1) {
-                this.leftover = chunk.slice(lastSpaceIndex + 1);
-                chunk = chunk.slice(0, lastSpaceIndex + 1);
+        const trailingSpaces = /\s+$/;
+        const spaceMatch = chunk.match(trailingSpaces);
+
+        if (spaceMatch) {
+            if (spaceMatch.index === 0) {
+                chunk = '';
+                this.leftover = chunk;
+            } else {
+                this.leftover = chunk.substring(spaceMatch.index);
+                chunk = chunk.substring(0, spaceMatch.index);
             };
         };
 
-        // Отправляем чанк для чтения
-        this.push(chunk);
-        this.dataIndex++;
+        this.dataIndex += chunkSize;
 
-        // Увеличиваем счетчик чанков и выводим
         if (chunk) {
             this.chunkCount++;
-            console.log(`Chunk №${this.chunkCount}:`, chunk);
-        }
-        // Если достигнут конец отправляем сигнал окончания чтения
-        if (this.dataIndex >= this.data.length && !this.leftover) {
+            console.log(`Chunk № ${this.chunkCount}:`, `|${chunk}|`);
+        };
+
+        this.push(chunk);
+
+        if (this.dataIndex >= this.dataStr.length && !this.leftover) {
             this.push(null);
         };
     };
 };
 
-const dataToRead = [
-  "Text line 1 ",
-  " Text line 2",
-  "Text line 3 "
-];
+// const dataToRead = '   dfgdfgdfg                 dfgf  fdg dsfg dfg dfg dfg dfg   ffdfffffffffffff ';
+const dataToRead = '             ';
 
-const reader = new MyReadable(dataToRead);
+// const dataToReadArray = [
+//     "Text line 1 ",
+//     " Text line 2",
+//     "Text line 3 ",
+//     "     1      ",
+//     "123"
+// ];
+// const dataToRead = dataToReadArray.join('');
+
+const reader = new MyReadable(dataToRead, { highWaterMark: 8 });
 reader.on('data', (data) => {}); 
 reader.on('end', () => {
-  console.log('👍 Чтение завершено!');
+    console.log('👍 Чтение завершено!');
 });
 
 // npm run task1
