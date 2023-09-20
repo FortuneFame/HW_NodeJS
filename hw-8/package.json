@@ -1,0 +1,19 @@
+{
+  "name": "hw-8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build:ts": "tsc --watch",
+    "nodemon": "nodemon Marchenko.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.6.2",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.2.2"
+  }
+}
