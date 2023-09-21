@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { sendHtmlPage, sendStaticFile } from '../utils/router';
-import { sendHtmlPageWithTime } from '../utils/tracker';
+import { sendHtmlPageWithTime } from '../utils/pageResponse';
 
 export const handleRequest = (req: IncomingMessage, res: ServerResponse): void => {
     const routeHandlers: Record<string, (req: IncomingMessage, res: ServerResponse) => void> = {
