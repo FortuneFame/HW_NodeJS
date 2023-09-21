@@ -1,0 +1,17 @@
+{
+  "name": "hw-9",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "tsx watch src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.6.3",
+    "tsx": "^3.12.10",
+    "typescript": "^5.2.2"
+  }
+}
